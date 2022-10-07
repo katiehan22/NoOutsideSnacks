@@ -12,8 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // mo.move();
   // mo.draw(ctx);
 
-  const food_item = new FoodItem(10, "nachos");
-  food_item.draw(ctx);
-  food_item.move();
+  // const food_item = new FoodItem(10, "nachos");
   // food_item.draw(ctx);
+  // food_item.move();
+  // food_item.draw(ctx);
+  
+  const game = new Game();
+  game.fillFoodItems();
+  console.log(game.allFoodItems);
+  game.draw(ctx);
 })

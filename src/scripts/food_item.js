@@ -1,6 +1,6 @@
 import MovingObject from "./moving_object"
 
-const FOODITEMS = { // need to change to img
+const FOODITEMS = { // need to change to images
   slushee: "blue",
   nachos: "orange",
   popcorn: "yellow",
@@ -17,6 +17,16 @@ class FoodItem extends MovingObject {
 
   move() {
     this.pos = [this.pos[0] + this.vel, this.pos[1]];
+  }
+
+  draw(ctx) {  // need to change to img
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.pos[0], this.pos[1], 50, 50);
+  }
+
+  static get FOODITEMS() {
+    return FOODITEMS;
   }
 }
 
