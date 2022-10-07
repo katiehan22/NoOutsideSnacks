@@ -27,6 +27,12 @@ class Game {
       this.allFoodItems[i].draw(ctx);
     }
   }
+
+  moveObjects() {
+    for (let i = 0; i < this.allFoodItems.length; i++) {
+      this.allFoodItems[i].move();
+    }
+  }
 }
 
 export default Game
