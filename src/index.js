@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
 
-  const mo = new MovingObject([100, 100], 100)
+  // const mo = new MovingObject([0,100], 100)
 
-  mo.draw(ctx);
-  mo.move();
+  // mo.draw(ctx);
+  // mo.move();
   // mo.draw(ctx);
 
-  const food_item = new FoodItem([200, 100], 100, "pretzel");
+  const food_item = new FoodItem(10, "nachos");
   food_item.draw(ctx);
   food_item.move();
-  food_item.draw(ctx);
+  // food_item.draw(ctx);
 })

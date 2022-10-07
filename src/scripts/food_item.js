@@ -8,11 +8,15 @@ const FOODITEMS = { // need to change to img
 }
 
 class FoodItem extends MovingObject {
-  constructor(pos, vel, name) {
-    super(pos, vel);
+  constructor(vel, name) {
+    super([0, 450], vel);
     this.name = name;
     this.color = FOODITEMS[name];   // need to change to img
     this.topping = null;
+  }
+
+  move() {
+    this.pos = [this.pos[0] + this.vel, this.pos[1]];
   }
 }
 
