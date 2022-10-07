@@ -1,7 +1,7 @@
-# NoOutsideSnacks
+# No Outside Snacks
 
 ## Background
-No Outside Snacks is a movie theater themed game. There will be 4 dispensers - movie theater butter, slushee, nacho cheese, and pretzel salt. Trays of food will move across the bottom of the screen. The user must match the correct topping with the food item and get enough points to move on to the next level. The levels with progressively get harder with the food items moving faster and the orders getting larger. 
+No Outside Snacks is a movie theater concession stand themed game. There will be 4 dispensers - movie theater butter, slushee, nacho cheese, and pretzel salt. Trays of food will move across the bottom of the screen. The user must match the correct topping with the food item and get enough points to move on to the next level. The levels with progressively get harder with the food items moving faster and the orders getting larger. 
 
 ## Functionality and MVPs
 Players will be able to: 
@@ -13,7 +13,7 @@ Additional Features:
 * Music: Background music and sound effects based on different actions.
 
 ## Wireframe
-![Imgur](https://i.imgur.com/qp4ZjYv.png)
+![Imgur](https://i.imgur.com/ZbzP84h.png)
 * Nav links include this project's Github repo and my LinkedIn.
 * Instructions will open up details on how to play and reminder on how many points are needed to advance.
 
