@@ -7,18 +7,28 @@ const NUM_FOOD_ITEMS = 10;
 
 class Game {
   constructor(){
-    this.allFoodItems = this.fillFoodItems();
+    this.allFoodItems = [];
+    this.fillFoodItems();
   }
 
+  // Try setting interval for creating food items
   fillFoodItems () {
-    let foodItemsArr = [];
+    setInterval(this.createFoodItem.bind(this), 2000);
+    // setTimeout(this.createFoodItem.bind(this), 200);
+    // this.allFoodItems.push(this.createFoodItem());
+    // setTimeout(this.createFoodItem.bind(this), 2000);
+    // for(let i = 0; i < NUM_FOOD_ITEMS; i++) {
+    //   setTimeout(this.createFoodItem.bind(this), 2000);
+    // }
+    // allFoodItems.push(newFoodItem)
+  }
+
+  createFoodItem() {
     let keys = Object.keys(FoodItem.FOODITEMS);
-    for(let i = 0; i < NUM_FOOD_ITEMS; i++) {
-      let randPos = Math.floor(Math.random() * 4);
-      let value = keys[randPos];
-      foodItemsArr.push(new FoodItem(10, value));
-    }
-    return foodItemsArr;
+    let randPos = Math.floor(Math.random() * 4);
+    let colorValue = keys[randPos];
+    let newFoodItem = new FoodItem(10, colorValue);
+    this.allFoodItems.push(newFoodItem);
   }
 
   draw(ctx) {
