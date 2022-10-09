@@ -1,0 +1,15 @@
+.canvas-div {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+}
+
+.dispenser-machines {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.slushee, .hotdog, .popcorn, .pretzel {
+  margin: 20px;
+}

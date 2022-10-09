@@ -34,10 +34,10 @@ class FoodItem extends MovingObject {
     ctx.drawImage(this.img, this.pos[0], this.pos[1], 75, 75);
   }
 
-  moveAcross(ctx) {
-    setInterval(this.draw.bind(this, ctx), 50);
-    setInterval(this.move.bind(this), 100);
-  }
+  // moveAcross(ctx) {
+  //   setInterval(this.draw.bind(this, ctx), 50);
+  //   setInterval(this.move.bind(this), 100);
+  // }
 
   static get FOODITEMS() {
     return FOODITEMS;
