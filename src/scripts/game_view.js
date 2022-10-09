@@ -1,9 +1,10 @@
 import Game from "./game";
 
 class GameView{
-  constructor(ctx) {
-    this.game = new Game();
+  constructor(ctx, el) {
+    this.game = new Game(el);
     this.ctx = ctx;
+    this.el = el;
   }
 
   start(){

@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
 
-  const gameView = new GameView(ctx);
+  let el = document.querySelector(".canvas-div");
+  const gameView = new GameView(ctx, el);
   gameView.start();
   // const foodItem = new FoodItem(10, "slushee");
   // foodItem.moveAcross(ctx);
