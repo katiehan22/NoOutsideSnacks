@@ -12,15 +12,9 @@ class Game {
   }
 
   // Try setting interval for creating food items
+  // Need to limit them
   fillFoodItems () {
     setInterval(this.createFoodItem.bind(this), 2000);
-    // setTimeout(this.createFoodItem.bind(this), 200);
-    // this.allFoodItems.push(this.createFoodItem());
-    // setTimeout(this.createFoodItem.bind(this), 2000);
-    // for(let i = 0; i < NUM_FOOD_ITEMS; i++) {
-    //   setTimeout(this.createFoodItem.bind(this), 2000);
-    // }
-    // allFoodItems.push(newFoodItem)
   }
 
   createFoodItem() {
