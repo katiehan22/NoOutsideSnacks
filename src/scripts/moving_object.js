@@ -7,7 +7,7 @@ class MovingObject {
   }
 
   draw(ctx) {  
-    ctx.drawImage(this.img, this.pos[0], this.pos[1], 50, 50);
+    ctx.drawImage(this.img, this.pos[0], this.pos[1], 75, 75);
   }
 
   move() {

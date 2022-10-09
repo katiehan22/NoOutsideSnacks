@@ -4,11 +4,18 @@ const DIM_X = 800;
 const DIM_Y = 600;
 
 const FOODITEMS = { 
-  slushee: "assets/emptycupblue3.png",
-  hotdog: "assets/hotdog.png",
-  popcorn: "assets/plainpopcorn.png",
-  pretzel: "assets/plainpretzel.png"
+  slushee: "assets/images/cupempty.png",
+  hotdog: "assets/images/hotdog.png",
+  popcorn: "assets/images/popcornplain.png",
+  pretzel: "assets/images/pretzelplain.png"
 }
+
+// const FOODITEMS = { // complete food items
+//   slushee: "assets/images/cupfilled.png",
+//   hotdog: "assets/images/hotdogmustard.png",
+//   popcorn: "assets/images/popcornbutter.png",
+//   pretzel: "assets/images/pretzelsalt.png"
+// }
 
 class FoodItem extends MovingObject {
   constructor(vel, name) {
@@ -24,7 +31,7 @@ class FoodItem extends MovingObject {
   }
 
   draw(ctx) {  
-    ctx.drawImage(this.img, this.pos[0], this.pos[1], 50, 50);
+    ctx.drawImage(this.img, this.pos[0], this.pos[1], 75, 75);
   }
 
   moveAcross(ctx) {

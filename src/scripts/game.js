@@ -7,6 +7,8 @@ const NUM_FOOD_ITEMS = 10;
 
 class Game {
   constructor(){
+    this.background = new Image();
+    this.background.src = "assets/images/concessions.png";
     this.allFoodItems = [];
     this.fillFoodItems();
   }
@@ -27,6 +29,7 @@ class Game {
 
   draw(ctx) {
     ctx.clearRect(0, 0, DIM_X, DIM_Y);
+    ctx.drawImage(this.background, 0, 0);  // draw background
     for(let i = 0; i < this.allFoodItems.length; i++) {
       this.allFoodItems[i].draw(ctx);
     }
