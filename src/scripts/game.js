@@ -20,8 +20,8 @@ class Game {
     this.scoreImg.src = "assets/images/starscore.png";
     this.correctSound = new Audio("assets/audio/correct.wav");
     this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
-    this.backgroundMusic = new Audio("assets/audio/background.mp3");
-    this.backgroundMusic.play();
+    // this.backgroundMusic = new Audio("assets/audio/background.mp3");
+    // this.backgroundMusic.play();
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
