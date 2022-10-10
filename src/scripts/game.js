@@ -111,7 +111,7 @@ class Game {
 
   checkToppingBounds() {
     // only need to check first each time
-    if (this.allToppings[0].outOfBounds()) {
+    if (this.allToppings.length > 0 && this.allToppings[0].outOfBounds()) {
       this.allToppings = this.allToppings.slice(1);
     }
   }
@@ -124,8 +124,48 @@ class Game {
   handleClick(e) {
     let selectedImg = e.target;
     if (selectedImg.nodeName === "IMG") {
-      let topping = new Topping(selectedImg.id);
-      this.allToppings.push(topping);
+      let newTopping = new Topping(selectedImg.id);
+      this.allToppings.push(newTopping);
+      this.getBelowFoodItem(newTopping);
+    }
+  }
+
+  getBelowFoodItem(newTopping) {
+    // Checks if there are any food items with an x-pos within the range of the clicked topping 
+    // Returns the food item
+    let belowFoodItem = null;
+    for(let i = 0; i < this.allFoodItems.length; i++) {
+      let foodItem = this.allFoodItems[i];
+      if (foodItem.pos[0] >= (newTopping.pos[0] - 125) && foodItem.pos[0] <= (newTopping.pos[0] - 10)) {
+        belowFoodItem = foodItem;
+        console.log(foodItem);
+        console.log(newTopping);
+      }
+    }
+    if (belowFoodItem != null && belowFoodItem.topping === null) {
+      this.addTopping(belowFoodItem, newTopping);
+    }
+    return belowFoodItem;
+  }
+
+  addTopping(belowFoodItem, newTopping) {
+    // Already checked that fooditem's topping is null
+    // Check if match is correct
+    // If dispenser matches food item, update fooditem.topping, change image to correct, add to the score
+    // If does not match, update fooditem.topping to incorrect, change image to incorrect 
+    if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
+      belowFoodItem.swapImage("correct");
+      this.score += 10;
+    } else {
+      belowFoodItem.swapImage("incorrect");
+    }
+  }
+
+  checkCorrectMatch(belowFoodItem, newTopping) {
+    if ((belowFoodItem.name === "hotdog" && newTopping.name === "hotdog-img") || (belowFoodItem.name === "popcorn" && newTopping.name === "popcorn-img") || (belowFoodItem.name === "slushee" && newTopping.name === "slushee-img") || (belowFoodItem.name === "pretzel" && newTopping.name === "pretzel-img")) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

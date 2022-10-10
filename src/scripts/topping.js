@@ -22,7 +22,7 @@ class Topping {
   }
 
   move() {
-    this.pos = [this.pos[0], this.pos[1] + 15];
+    this.pos = [this.pos[0], this.pos[1] + 20];
   }
 
   outOfBounds() {
@@ -32,6 +32,7 @@ class Topping {
       return false;
     }
   }
+
 }
 
 export default Topping

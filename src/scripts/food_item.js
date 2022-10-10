@@ -7,15 +7,16 @@ const FOODITEMS = {
   slushee: "assets/images/cupempty.png",
   hotdog: "assets/images/hotdog.png",
   popcorn: "assets/images/popcornplain.png",
-  pretzel: "assets/images/pretzelplain.png"
+  pretzel: "assets/images/pretzelplain.png",
+  slusheeCorrect: "assets/images/cupfilled.png",
+  hotdogCorrect: "assets/images/hotdogmustard.png",
+  popcornCorrect: "assets/images/popcornbutter.png",
+  pretzelCorrect: "assets/images/pretzelsalt.png", 
+  slusheeIncorrect: "assets/images/cupincorrect.png",
+  hotdogIncorrect: "assets/images/hotdogincorrect.png",
+  popcornIncorrect: "assets/images/popcornincorrect.png",
+  pretzelIncorrect: "assets/images/pretzelincorrect.png"
 }
-
-// const FOODITEMS = { // complete food items
-//   slushee: "assets/images/cupfilled.png",
-//   hotdog: "assets/images/hotdogmustard.png",
-//   popcorn: "assets/images/popcornbutter.png",
-//   pretzel: "assets/images/pretzelsalt.png"
-// }
 
 class FoodItem extends MovingObject {
   constructor(vel, name) {
@@ -34,9 +35,38 @@ class FoodItem extends MovingObject {
     ctx.drawImage(this.img, this.pos[0], this.pos[1], 75, 75);
   }
 
-  // moveAcross(ctx) {
-  //   setInterval(this.draw.bind(this, ctx), 50);
-  //   setInterval(this.move.bind(this), 100);
+  swapImage(status) {
+    if (status === "correct") {
+      // Change to correct img
+      if (this.name === "slushee") {
+        this.img.src = "assets/images/cupfilled.png";
+      } else if (this.name === "hotdog") {
+        this.img.src = "assets/images/hotdogmustard.png";
+      } else if (this.name === "popcorn") {
+        this.img.src = "assets/images/popcornbutter.png";
+      } else {
+        this.img.src = "assets/images/pretzelsalt.png";
+      }
+    } else {
+      // Change to incorrect img
+      if (this.name === "slushee") {
+        this.img.src = "assets/images/cupincorrect.png";
+      } else if (this.name === "hotdog") {
+        this.img.src = "assets/images/hotdogincorrect.png";
+      } else if (this.name === "popcorn") {
+        this.img.src = "assets/images/popcornincorrect.png";
+      } else {
+        this.img.src = "assets/images/pretzelincorrect.png";
+      }
+    }
+  }
+
+  // outOfBounds() {
+  //   if (this.pos[0] > DIM_X) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
   // }
 
   static get FOODITEMS() {
