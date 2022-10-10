@@ -1,4 +1,18 @@
 .header-nav {
   width: 800px;
   height: 80px;
+  display: flex;
+}
+
+.icons {
+  display: flex;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+#github, #linkedin, #mute {
+  margin: 5px;
 }

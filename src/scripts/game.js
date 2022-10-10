@@ -18,6 +18,10 @@ class Game {
     this.score = 0;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
+    this.correctSound = new Audio("assets/audio/correct.wav");
+    this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
+    this.backgroundMusic = new Audio("assets/audio/background.mp3");
+    this.backgroundMusic.play();
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
@@ -155,9 +159,11 @@ class Game {
     // If does not match, update fooditem.topping to incorrect, change image to incorrect 
     if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
       belowFoodItem.swapImage("correct");
+      this.correctSound.play();
       this.score += 10;
     } else {
       belowFoodItem.swapImage("incorrect");
+      this.incorrectSound.play();
     }
   }
 
