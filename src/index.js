@@ -10,22 +10,4 @@ document.addEventListener("DOMContentLoaded", () => {
   let el = document.querySelector(".canvas-div");
   const gameView = new GameView(ctx, el);
   gameView.start();
-  // const foodItem = new FoodItem(10, "slushee");
-  // foodItem.moveAcross(ctx);
-
-  // const mo = new MovingObject([0,100], 100)
-
-  // mo.draw(ctx);
-  // mo.move();
-  // mo.draw(ctx);
-
-  // const food_item = new FoodItem(10, "nachos");
-  // food_item.draw(ctx);
-  // food_item.move();
-  // food_item.draw(ctx);
-
-  // const game = new Game();
-  // game.fillFoodItems();
-  // console.log(game.allFoodItems);
-  // game.draw(ctx);
 })

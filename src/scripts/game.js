@@ -39,24 +39,28 @@ class Game {
     dispenserSlushee.classList.add("slushee");
     let imgSlushee = document.createElement("img");
     imgSlushee.src = "assets/images/dispenserslushee.png";
+    imgSlushee.id = "slushee-img";
     dispenserSlushee.appendChild(imgSlushee);
 
     let dispenserHotdog = document.createElement("li");
     dispenserHotdog.classList.add("hotdog");
     let imgHotdog = document.createElement("img");
     imgHotdog.src = "assets/images/dispensermustard.png";
+    imgHotdog.id = "hotdog-img";
     dispenserHotdog.appendChild(imgHotdog);
 
     let dispenserPopcorn = document.createElement("li");
     dispenserPopcorn.classList.add("popcorn");
     let imgPopcorn = document.createElement("img");
     imgPopcorn.src = "assets/images/dispenserbutter.png";
+    imgPopcorn.id = "popcorn-img";
     dispenserPopcorn.appendChild(imgPopcorn);
 
     let dispenserPretzel = document.createElement("li");
     dispenserPretzel.classList.add("pretzel");
     let imgPretzel = document.createElement("img");
     imgPretzel.src = "assets/images/dispensersalt.png";
+    imgPretzel.id = "pretzel-img";
     dispenserPretzel.appendChild(imgPretzel);
 
     ul.appendChild(dispenserSlushee);
