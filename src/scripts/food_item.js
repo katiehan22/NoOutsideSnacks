@@ -37,7 +37,7 @@ class FoodItem extends MovingObject {
 
   swapImage(status) {
     if (status === "correct") {
-      // Change to correct img
+      // Change to correct img and set this.topping
       if (this.name === "slushee") {
         this.img.src = "assets/images/cupfilled.png";
       } else if (this.name === "hotdog") {
@@ -47,6 +47,7 @@ class FoodItem extends MovingObject {
       } else {
         this.img.src = "assets/images/pretzelsalt.png";
       }
+      this.topping = this.name;
     } else {
       // Change to incorrect img
       if (this.name === "slushee") {
@@ -58,6 +59,7 @@ class FoodItem extends MovingObject {
       } else {
         this.img.src = "assets/images/pretzelincorrect.png";
       }
+      this.topping = "incorrect";
     }
   }
 
