@@ -94,6 +94,13 @@ class Game {
     }
   }
 
+  checkToppingBounds() {
+    // only need to check first each time
+    if (this.allToppings[0].outOfBounds()) {
+      this.allToppings = this.allToppings.slice(1);
+    }
+  }
+
   bindEvents() {
     let ul = document.querySelector(".dispenser-machines")
     ul.addEventListener("click", this.handleClick);
