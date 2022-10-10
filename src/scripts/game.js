@@ -1,6 +1,5 @@
 import FoodItem from "./food_item";
 import Topping from "./topping";
-import Dispenser from "./dispenser";
 
 const DIM_X = 800;
 const DIM_Y = 600;
@@ -16,6 +15,9 @@ class Game {
     this.allFoodItems = [];
     this.fillFoodItems();
     this.allToppings = [];
+    this.score = 0;
+    this.scoreImg = new Image();
+    this.scoreImg.src = "assets/images/starscore.png";
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
@@ -75,13 +77,26 @@ class Game {
 
   draw(ctx) {
     ctx.clearRect(0, 0, DIM_X, DIM_Y);
-    ctx.drawImage(this.background, 0, 0);  // draw background
+    // draw background
+    ctx.drawImage(this.background, 0, 0);
+    // draw food items
     for(let i = 0; i < this.allFoodItems.length; i++) {
       this.allFoodItems[i].draw(ctx);
     }
+    // draw toppings being dispensed 
     for (let j = 0; j < this.allToppings.length; j++) {
       this.allToppings[j].draw(ctx);
     }
+
+    // draw score
+    ctx.drawImage(this.scoreImg, 600, 0, 175, 175);
+    ctx.textAlign = "center";
+    ctx.lineWidth = 0.5;
+    ctx.fillStyle = "black";
+    ctx.font = "15px Arial";
+    ctx.fillText("Score", 686, 80);
+    ctx.font = "30px Arial";
+    ctx.fillText(`${this.score}`, 685, 110);
   }
 
   moveObjects() {
