@@ -7,7 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
 
-  let el = document.querySelector(".canvas-div");
-  const gameView = new GameView(ctx, el);
-  gameView.start();
+  const startButton = document.getElementById("start-button");
+  const titleScreen = document.querySelector(".title-screen");
+  const canvasDiv = document.querySelector(".canvas-div");
+  const gameCanvas = document.getElementById("game-canvas");
+
+  // let el = document.querySelector(".canvas-div");  // Same as canvas div above
+  startButton.addEventListener("click", function(){
+    titleScreen.style.display = "none";
+    canvasDiv.style.display = "block";
+    gameCanvas.style.display = "block";
+    const gameView = new GameView(ctx, canvasDiv);
+    gameView.start();
+  })
 })

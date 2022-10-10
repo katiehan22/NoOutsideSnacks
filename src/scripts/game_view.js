@@ -14,7 +14,6 @@ class GameView{
     setInterval(this.game.moveObjects.bind(this.game), 100);
     setInterval(this.game.checkToppingBounds.bind(this.game), 100);
   }
-
 }
 
 export default GameView
