@@ -1,4 +1,5 @@
 import FoodItem from "./food_item";
+import Topping from "./topping";
 import Dispenser from "./dispenser";
 
 const DIM_X = 800;
@@ -14,6 +15,9 @@ class Game {
     this.createDispensers();
     this.allFoodItems = [];
     this.fillFoodItems();
+    this.allToppings = [];
+    this.handleClick = this.handleClick.bind(this);
+    this.bindEvents();
   }
 
   // Try setting interval for creating food items
@@ -75,11 +79,31 @@ class Game {
     for(let i = 0; i < this.allFoodItems.length; i++) {
       this.allFoodItems[i].draw(ctx);
     }
+    for (let j = 0; j < this.allToppings.length; j++) {
+      this.allToppings[j].draw(ctx);
+    }
   }
 
   moveObjects() {
     for (let i = 0; i < this.allFoodItems.length; i++) {
       this.allFoodItems[i].move();
+    }
+
+    for (let j = 0; j < this.allToppings.length; j++) {
+      this.allToppings[j].move();
+    }
+  }
+
+  bindEvents() {
+    let ul = document.querySelector(".dispenser-machines")
+    ul.addEventListener("click", this.handleClick);
+  }
+
+  handleClick(e) {
+    let selectedImg = e.target;
+    if (selectedImg.nodeName === "IMG") {
+      let topping = new Topping(selectedImg.id);
+      this.allToppings.push(topping);
     }
   }
 }
