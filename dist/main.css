@@ -1,15 +1,14 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
 .canvas-div {
-  display: none;
   position: absolute;
   width: 800px;
   height: 600px;
-}
-
-#game-canvas {
-  display: none;
 }
 
 .dispenser-machines {
@@ -27,7 +26,7 @@
   cursor: pointer;
 }
 
-.header-nav {
+.header-img {
   width: 800px;
   height: 80px;
   display: flex;
@@ -36,13 +35,13 @@
 .icons {
   display: flex;
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
   margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
-#github, #linkedin, #mute {
+#github, #linkedin {
   margin: 5px;
 }
 
@@ -50,6 +49,7 @@
   width: 800px;
   height: 600px;
   padding: 20px;
+  display: none;
 }
 
 #start-button {

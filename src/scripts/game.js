@@ -93,14 +93,14 @@ class Game {
     }
 
     // draw score
-    ctx.drawImage(this.scoreImg, 600, 0, 175, 175);
+    ctx.drawImage(this.scoreImg, 560, 0, 175, 175);
     ctx.textAlign = "center";
     ctx.lineWidth = 0.5;
     ctx.fillStyle = "black";
     ctx.font = "15px Arial";
-    ctx.fillText("Score", 686, 80);
+    ctx.fillText("Score", 646, 80);
     ctx.font = "30px Arial";
-    ctx.fillText(`${this.score}`, 685, 110);
+    ctx.fillText(`${this.score}`, 647, 110);
   }
 
   moveObjects() {

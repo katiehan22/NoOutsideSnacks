@@ -12,12 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvasDiv = document.querySelector(".canvas-div");
   const gameCanvas = document.getElementById("game-canvas");
 
-  // let el = document.querySelector(".canvas-div");  // Same as canvas div above
-  startButton.addEventListener("click", function(){
-    titleScreen.style.display = "none";
-    canvasDiv.style.display = "block";
-    gameCanvas.style.display = "block";
-    const gameView = new GameView(ctx, canvasDiv);
-    gameView.start();
-  })
+  // need to comment this out and further below back in when putting title screen back
+  const gameView = new GameView(ctx, canvasDiv);
+  gameView.start();
+  // startButton.addEventListener("click", function(){
+  //   titleScreen.style.display = "none";
+  //   canvasDiv.style.display = "block";
+  //   gameCanvas.style.display = "block";
+  //   const gameView = new GameView(ctx, canvasDiv);
+  //   gameView.start();
+  // })
 })

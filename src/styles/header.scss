@@ -1,4 +1,6 @@
-.header-nav {
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+.header-img {
   width: 800px;
   height: 80px;
   display: flex;
@@ -7,12 +9,26 @@
 .icons {
   display: flex;
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
   margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
-#github, #linkedin, #mute {
+#github, #linkedin {
   margin: 5px;
 }
+
+// .top-nav {
+//   width: 800px;
+//   height: 40px;
+//   display: flex;
+// }
+
+// .social-buttons {
+//   float: left;
+// }
+
+// .game-buttons {
+//   float: right;
+// }
