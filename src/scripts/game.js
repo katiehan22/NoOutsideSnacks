@@ -27,10 +27,14 @@ class Game {
     this.bindEvents();
   }
 
-  // Try setting interval for creating food items
-  // Need to limit them
+  // Need to limit amount of items
   fillFoodItems () {
-    setInterval(this.createFoodItem.bind(this), 2000);
+    // setInterval(this.createFoodItem.bind(this), 2000);
+    let i = 0;
+    while (i < 15){
+      setTimeout(this.createFoodItem.bind(this), 2000);
+      i += 1;
+    }
   }
 
   createFoodItem() {
@@ -121,9 +125,9 @@ class Game {
     ctx.textAlign = "center";
     ctx.lineWidth = 0.5;
     ctx.fillStyle = "black";
-    ctx.font = "15px Arial";
+    ctx.font = "15px Alkalami";
     ctx.fillText("Score", 646, 80);
-    ctx.font = "30px Arial";
+    ctx.font = "30px Alkalami";
     ctx.fillText(`${this.score}`, 647, 110);
   }
 
