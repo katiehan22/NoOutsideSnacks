@@ -21,8 +21,8 @@ class Game {
     this.scoreImg.src = "assets/images/starscore.png";
     this.correctSound = new Audio("assets/audio/correct.wav");
     this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
-    // this.backgroundMusic = new Audio("assets/audio/background.mp3");
-    // this.backgroundMusic.play();
+    this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
+    this.backgroundMusic.play();
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
@@ -147,6 +147,12 @@ class Game {
   bindEvents() {
     let ul = document.querySelector(".dispenser-machines")
     ul.addEventListener("click", this.handleClick);
+
+    let muteButton = document.querySelector("#mute-img");
+    muteButton.addEventListener("click", this.handleMute);
+
+    let pauseButton = document.querySelector("#pause-img");
+    pauseButton.addEventListener("click", this.handlePause);
   }
 
   handleClick(e) {
@@ -156,6 +162,26 @@ class Game {
       this.allToppings.push(newTopping);
       this.getBelowFoodItem(newTopping);
     }
+  }
+
+  handleMute(e) {
+    // let selectedButton = e.target;
+    // console.log(selectedButton);
+    console.log(this.backgroundMusic);
+    if (this.backgroundMusic.muted) {
+      this.backgroundMusic.muted = false;
+      this.correctSound.muted = false;
+      this.incorrectSound.muted = false;
+    } else {
+      this.backgroundMusic.muted = true;
+      this.correctSound.muted = true;
+      this.incorrectSound.muted = true;
+    }
+  }
+
+  handlePause(e) {
+    let selectedButton = e.target;
+    console.log(selectedButton);
   }
 
   getBelowFoodItem(newTopping) {

@@ -6,9 +6,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
   \*****************************************************************************************************************************************/
 .canvas-div {
+  display: none;
   position: absolute;
   width: 800px;
   height: 600px;
+}
+
+#game-canvas {
+  display: none;
 }
 
 .dispenser-machines {
@@ -68,7 +73,6 @@
   width: 800px;
   height: 600px;
   padding: 20px;
-  display: none;
 }
 
 #start-button {
