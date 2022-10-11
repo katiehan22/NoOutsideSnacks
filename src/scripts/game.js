@@ -14,6 +14,8 @@ class Game {
     this.createMutePause();
     this.createDispensers();
     this.allFoodItems = [];
+    this.numItems = 0;  // Num items that have been created. Increments when a new item is created 
+    this.intervalId = undefined;
     this.fillFoodItems();
     this.allToppings = [];
     this.paused = false;
@@ -28,14 +30,8 @@ class Game {
     this.bindEvents();
   }
 
-  // Need to limit amount of items
   fillFoodItems () {
-    // setInterval(this.createFoodItem.bind(this), 2000);
-    let i = 0;
-    while (i < 15){
-      setTimeout(this.createFoodItem.bind(this), 2000);
-      i += 1;
-    }
+    this.intervalId = setInterval(this.createFoodItem.bind(this), 2000);
   }
 
   createFoodItem() {
@@ -44,6 +40,10 @@ class Game {
     let colorValue = keys[randPos];
     let newFoodItem = new FoodItem(10, colorValue);
     this.allFoodItems.push(newFoodItem);
+    this.numItems += 1;
+    if (this.numItems === NUM_FOOD_ITEMS) {
+      clearInterval(this.intervalId);
+    }
   }
 
   createMutePause() {
