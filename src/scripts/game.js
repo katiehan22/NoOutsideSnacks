@@ -16,6 +16,7 @@ class Game {
     this.allFoodItems = [];
     this.fillFoodItems();
     this.allToppings = [];
+    this.paused = false;
     this.score = 0;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
@@ -156,7 +157,7 @@ class Game {
     muteButton.addEventListener("click", this.handleMute);
 
     let pauseButton = document.querySelector("#pause-img");
-    pauseButton.addEventListener("click", this.handlePause);
+    pauseButton.addEventListener("click", this.togglePause);
   }
 
   handleClick(e) {
@@ -183,9 +184,16 @@ class Game {
     }
   }
 
-  handlePause(e) {
-    let selectedButton = e.target;
-    console.log(selectedButton);
+  togglePause(e) {
+    // let selectedButton = e.target;
+    // console.log(selectedButton);
+    console.log(this.paused);
+    if (this.paused === false || this.paused === undefined) {
+      this.paused = true;
+    } else {
+      this.paused = false;
+    }
+    console.log(this.paused);
   }
 
   getBelowFoodItem(newTopping) {
