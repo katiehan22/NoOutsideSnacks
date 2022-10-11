@@ -1,5 +1,6 @@
 import FoodItem from "./food_item";
 import Topping from "./topping";
+import Level from "./level"
 
 const DIM_X = 800;
 const DIM_Y = 600;
@@ -13,38 +14,33 @@ class Game {
     this.background.src = "assets/images/concessions4.png";
     this.createMutePause();
     this.createDispensers();
-    this.allFoodItems = [];
-    this.numItems = 0;  // Num items that have been created. Increments when a new item is created 
-    this.intervalId = undefined;
-    this.fillFoodItems();
-    this.allToppings = [];
     this.paused = false;
-    this.score = 0;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
-    this.correctSound = new Audio("assets/audio/correct.wav");
-    this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
-    this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
-    this.backgroundMusic.play();
+    this.level = new Level(1); // ADD HERE
+    // this.correctSound = new Audio("assets/audio/correct.wav");
+    // this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
+    // this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
+    // this.backgroundMusic.play();
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
 
-  fillFoodItems () {
-    this.intervalId = setInterval(this.createFoodItem.bind(this), 2000);
-  }
+  // fillFoodItems () {
+  //   this.intervalId = setInterval(this.createFoodItem.bind(this), 2000);
+  // }
 
-  createFoodItem() {
-    let keys = Object.keys(FoodItem.FOODITEMS);
-    let randPos = Math.floor(Math.random() * 4);
-    let colorValue = keys[randPos];
-    let newFoodItem = new FoodItem(10, colorValue);
-    this.allFoodItems.push(newFoodItem);
-    this.numItems += 1;
-    if (this.numItems === NUM_FOOD_ITEMS) {
-      clearInterval(this.intervalId);
-    }
-  }
+  // createFoodItem() {
+  //   let keys = Object.keys(FoodItem.FOODITEMS);
+  //   let randPos = Math.floor(Math.random() * 4);
+  //   let colorValue = keys[randPos];
+  //   let newFoodItem = new FoodItem(10, colorValue);
+  //   this.allFoodItems.push(newFoodItem);
+  //   this.numItems += 1;
+  //   if (this.numItems === NUM_FOOD_ITEMS) {
+  //     clearInterval(this.intervalId);
+  //   }
+  // }
 
   createMutePause() {
     const ul = document.createElement("ul");
@@ -113,12 +109,12 @@ class Game {
     // draw background
     ctx.drawImage(this.background, 0, 0);
     // draw food items
-    for(let i = 0; i < this.allFoodItems.length; i++) {
-      this.allFoodItems[i].draw(ctx);
+    for(let i = 0; i < this.level.allFoodItems.length; i++) {
+      this.level.allFoodItems[i].draw(ctx);
     }
     // draw toppings being dispensed 
-    for (let j = 0; j < this.allToppings.length; j++) {
-      this.allToppings[j].draw(ctx);
+    for (let j = 0; j < this.level.allToppings.length; j++) {
+      this.level.allToppings[j].draw(ctx);
     }
 
     // draw score
@@ -129,25 +125,24 @@ class Game {
     ctx.font = "15px Alkalami";
     ctx.fillText("Score", 646, 80);
     ctx.font = "30px Alkalami";
-    ctx.fillText(`${this.score}`, 647, 110);
+    ctx.fillText(`${this.level.score}`, 647, 110);
   }
 
   moveObjects() {
-    for (let i = 0; i < this.allFoodItems.length; i++) {
-      this.allFoodItems[i].move();
+    for (let i = 0; i < this.level.allFoodItems.length; i++) {
+      this.level.allFoodItems[i].move();
     }
 
-    for (let j = 0; j < this.allToppings.length; j++) {
-      this.allToppings[j].move();
+    for (let j = 0; j < this.level.allToppings.length; j++) {
+      this.level.allToppings[j].move();
     }
   }
 
-  checkToppingBounds() {
-    // only need to check first each time
-    if (this.allToppings.length > 0 && this.allToppings[0].outOfBounds()) {
-      this.allToppings = this.allToppings.slice(1);
-    }
-  }
+  // checkToppingBounds() {
+  //   if (this.allToppings.length > 0 && this.allToppings[0].outOfBounds()) {
+  //     this.allToppings = this.allToppings.slice(1);
+  //   }
+  // }
 
   bindEvents() {
     let ul = document.querySelector(".dispenser-machines")
@@ -164,15 +159,12 @@ class Game {
     let selectedImg = e.target;
     if (selectedImg.nodeName === "IMG") {
       let newTopping = new Topping(selectedImg.id);
-      this.allToppings.push(newTopping);
-      this.getBelowFoodItem(newTopping);
+      this.level.allToppings.push(newTopping);
+      this.level.getBelowFoodItem(newTopping);
     }
   }
 
   handleMute(e) {
-    // let selectedButton = e.target;
-    // console.log(selectedButton);
-    console.log(this.backgroundMusic);
     if (this.backgroundMusic.muted) {
       this.backgroundMusic.muted = false;
       this.correctSound.muted = false;
@@ -185,57 +177,53 @@ class Game {
   }
 
   togglePause(e) {
-    // let selectedButton = e.target;
-    // console.log(selectedButton);
-    console.log(this.paused);
     if (this.paused === false || this.paused === undefined) {
       this.paused = true;
     } else {
       this.paused = false;
     }
-    console.log(this.paused);
   }
 
-  getBelowFoodItem(newTopping) {
-    // Checks if there are any food items with an x-pos within the range of the clicked topping 
-    // Returns the food item
-    let belowFoodItem = null;
-    for(let i = 0; i < this.allFoodItems.length; i++) {
-      let foodItem = this.allFoodItems[i];
-      if (foodItem.pos[0] >= (newTopping.pos[0] - 125) && foodItem.pos[0] <= (newTopping.pos[0] - 10)) {
-        belowFoodItem = foodItem;
-        console.log(foodItem);
-        console.log(newTopping);
-      }
-    }
-    if (belowFoodItem != null && belowFoodItem.topping === null) {
-      this.addTopping(belowFoodItem, newTopping);
-    }
-    return belowFoodItem;
-  }
+  // getBelowFoodItem(newTopping) {
+  //   // Checks if there are any food items with an x-pos within the range of the clicked topping 
+  //   // Returns the food item
+  //   let belowFoodItem = null;
+  //   for(let i = 0; i < this.allFoodItems.length; i++) {
+  //     let foodItem = this.allFoodItems[i];
+  //     if (foodItem.pos[0] >= (newTopping.pos[0] - 125) && foodItem.pos[0] <= (newTopping.pos[0] - 10)) {
+  //       belowFoodItem = foodItem;
+  //       console.log(foodItem);
+  //       console.log(newTopping);
+  //     }
+  //   }
+  //   if (belowFoodItem != null && belowFoodItem.topping === null) {
+  //     this.addTopping(belowFoodItem, newTopping);
+  //   }
+  //   return belowFoodItem;
+  // }
 
-  addTopping(belowFoodItem, newTopping) {
-    // Already checked that fooditem's topping is null
-    // Check if match is correct
-    // If dispenser matches food item, update fooditem.topping, change image to correct, add to the score
-    // If does not match, update fooditem.topping to incorrect, change image to incorrect 
-    if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
-      belowFoodItem.swapImage("correct");
-      this.correctSound.play();
-      this.score += 10;
-    } else {
-      belowFoodItem.swapImage("incorrect");
-      this.incorrectSound.play();
-    }
-  }
+  // addTopping(belowFoodItem, newTopping) {
+  //   // Already checked that fooditem's topping is null
+  //   // Check if match is correct
+  //   // If dispenser matches food item, update fooditem.topping, change image to correct, add to the score
+  //   // If does not match, update fooditem.topping to incorrect, change image to incorrect 
+  //   if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
+  //     belowFoodItem.swapImage("correct");
+  //     this.correctSound.play();
+  //     this.score += 1;
+  //   } else {
+  //     belowFoodItem.swapImage("incorrect");
+  //     this.incorrectSound.play();
+  //   }
+  // }
 
-  checkCorrectMatch(belowFoodItem, newTopping) {
-    if ((belowFoodItem.name === "hotdog" && newTopping.name === "hotdog-img") || (belowFoodItem.name === "popcorn" && newTopping.name === "popcorn-img") || (belowFoodItem.name === "slushee" && newTopping.name === "slushee-img") || (belowFoodItem.name === "pretzel" && newTopping.name === "pretzel-img")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // checkCorrectMatch(belowFoodItem, newTopping) {
+  //   if ((belowFoodItem.name === "hotdog" && newTopping.name === "hotdog-img") || (belowFoodItem.name === "popcorn" && newTopping.name === "popcorn-img") || (belowFoodItem.name === "slushee" && newTopping.name === "slushee-img") || (belowFoodItem.name === "pretzel" && newTopping.name === "pretzel-img")) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }
 
 export default Game
