@@ -11,6 +11,7 @@ class Game {
     this.el = el; // el is the document query selecter for .canvas-div
     this.background = new Image();
     this.background.src = "assets/images/concessions4.png";
+    this.createMutePause();
     this.createDispensers();
     this.allFoodItems = [];
     this.fillFoodItems();
@@ -38,6 +39,29 @@ class Game {
     let colorValue = keys[randPos];
     let newFoodItem = new FoodItem(10, colorValue);
     this.allFoodItems.push(newFoodItem);
+  }
+
+  createMutePause() {
+    const ul = document.createElement("ul");
+    ul.classList.add("game-buttons");
+    this.el.appendChild(ul);
+
+    let mute = document.createElement("li");
+    mute.classList.add("mute");
+    let imgMute = document.createElement("img");
+    imgMute.src = "assets/images/buttonmute.png";
+    imgMute.id = "mute-img";
+    mute.appendChild(imgMute);
+
+    let pause = document.createElement("li");
+    pause.classList.add("pause");
+    let imgPause = document.createElement("img");
+    imgPause.src = "assets/images/buttonpause.png";
+    imgPause.id = "pause-img";
+    pause.appendChild(imgPause);
+
+    ul.appendChild(mute);
+    ul.appendChild(pause);
   }
 
   createDispensers() {
