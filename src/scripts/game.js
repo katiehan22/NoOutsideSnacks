@@ -4,11 +4,10 @@ import Level from "./level"
 
 const DIM_X = 800;
 const DIM_Y = 600;
-const NUM_FOOD_ITEMS = 10;
-
 
 class Game {
-  constructor(el){
+  constructor(ctx, el){
+    this.ctx = ctx;
     this.el = el; 
     this.background = new Image();
     this.background.src = "assets/images/concessions4.png";
@@ -20,6 +19,16 @@ class Game {
     this.level = new Level(1); // ADD HERE
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
+  }
+
+  start() {
+    this.step();
+  }
+
+  step() {
+    setInterval(this.draw.bind(this, this.ctx), 100);
+    setInterval(this.moveObjects.bind(this), 100);
+    setInterval(this.level.checkToppingBounds.bind(this.level), 100);
   }
 
   // startGame()
