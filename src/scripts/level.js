@@ -6,7 +6,7 @@ const DIM_Y = 600;
 
 const LEVELVARIABLES = {
   1: [1, 2, 2000, 10, 1], 
-  2: [2, 5, 2000, 20, 2],
+  2: [2, 15, 2000, 16, 10],
   3: [1, 2, 2000, 10, 1]
 }
 // Need to change level 3
@@ -32,8 +32,8 @@ class Level {
     this.score = 0;
     this.correctSound = new Audio("assets/audio/correct.wav");
     this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
-    this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
-    this.backgroundMusic.play();
+    // this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
+    // this.backgroundMusic.play();
   }
 
   fillFoodItems() {
@@ -53,6 +53,7 @@ class Level {
   }
 
   checkToppingBounds() {
+    console.log(this.allToppings);
     if (this.allToppings.length > 0 && this.allToppings[0].outOfBounds()) {
       this.allToppings = this.allToppings.slice(1);
     }

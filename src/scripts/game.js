@@ -11,6 +11,8 @@ class Game {
     this.el = el; 
     this.background = new Image();
     this.background.src = "assets/images/concessions4.png";
+    this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
+    this.backgroundMusic.play();
     this.createMutePause();
     this.createDispensers();
     this.paused = false;
@@ -20,8 +22,10 @@ class Game {
     this.endScreen = document.querySelector(".end-screen");
     this.levelNum = 1;
     this.level = new Level(this.levelNum); // ADD HERE
+    this.intervalIdToppingBounds = undefined;
     this.handleClick = this.handleClick.bind(this);
     this.startNextLevel = this.startNextLevel.bind(this);
+    this.restartGame = this.restartGame.bind(this);
     this.bindEvents();
   }
 
@@ -32,7 +36,7 @@ class Game {
   step() {
     setInterval(this.draw.bind(this, this.ctx), 100);
     setInterval(this.moveObjects.bind(this), 100);
-    setInterval(this.level.checkToppingBounds.bind(this.level), 100);
+    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100);
     setInterval(this.isOver.bind(this), 100);
   }
 
@@ -175,6 +179,9 @@ class Game {
 
     let nextLevelButton = document.querySelector("#next-level-button");
     nextLevelButton.addEventListener("click", this.startNextLevel);
+
+    let restartButton = document.querySelector("#restart-button");
+    restartButton.addEventListener("click", this.restartGame);
   }
 
   handleClick(e) {
@@ -210,6 +217,16 @@ class Game {
     this.levelsScreen.style.display = "none";
     this.levelNum += 1;
     this.level = new Level(this.levelNum);
+    clearInterval(this.intervalIdToppingBounds);
+    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100)
+  }
+
+  restartGame(e) {
+    this.endScreen.style.display = "none";
+    this.levelNum = 1;
+    this.level = new Level(this.levelNum);
+    clearInterval(this.intervalIdToppingBounds);
+    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100)
   }
 }
 
