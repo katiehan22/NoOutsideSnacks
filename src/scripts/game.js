@@ -1,6 +1,6 @@
 import FoodItem from "./food_item";
 import Topping from "./topping";
-import Level from "./level"
+import Level from "./level";
 
 const DIM_X = 800;
 const DIM_Y = 600;
@@ -30,12 +30,27 @@ class Game {
     setInterval(this.draw.bind(this, this.ctx), 100);
     setInterval(this.moveObjects.bind(this), 100);
     setInterval(this.level.checkToppingBounds.bind(this.level), 100);
-    setInterval(this.level.isOver.bind(this.level), 100);
+    setInterval(this.isOver.bind(this), 100);
   }
 
-  // startGame()
-  // Creates new Level(1)
-  // If level1.
+  isOver() {
+    // if allFoodItems.length === totalFoodItems and the last foodItem's x pos is greater than DIM X
+    if (this.level.allFoodItems.length === Level.LEVELVARIABLES[this.level.levelNum][1] && this.level.allFoodItems[this.level.allFoodItems.length - 1].pos[0] >= DIM_X) {
+      this.levelResult();
+    }
+  }
+
+  levelResult() {
+    // returns win or lose
+    // If score is greater/equal to correctItemsNeeded
+    if (this.level.score >= Level.LEVELVARIABLES[this.level.levelNum][4]) {
+      alert("You Win");
+      return "win";
+    } else {
+      alert("You Lose");
+      return "lose";
+    }
+  }
 
   createMutePause() {
     const ul = document.createElement("ul");

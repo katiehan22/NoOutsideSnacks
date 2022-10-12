@@ -93,33 +93,9 @@ class Level {
     }
   }
 
-  isOver() {
-    // allFoodItems.length === totalFoodItems and the last foodItem's x pos is greater than DIM X
-    if (this.allFoodItems.length === LEVELVARIABLES[this.levelNum][1] && this.allFoodItems[this.allFoodItems.length - 1].pos[0] >= DIM_X) {
-      return this.levelResult();
-    } else {
-      return false;
-    }
-    
+  static get LEVELVARIABLES() {
+    return LEVELVARIABLES;
   }
-
-  levelResult() {
-    // returns win or lose
-    // If score is greater/equal to correctItemsNeeded
-    if (this.score >= LEVELVARIABLES[this.levelNum][4]) {
-      alert("You Win");
-      return "win";
-    } else {
-      alert("You Lose");
-      return "lose";
-    }
-  }
-
-
-
-
-
-
 }
 
 export default Level
