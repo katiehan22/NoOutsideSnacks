@@ -16,7 +16,8 @@ class Game {
     this.paused = false;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
-    this.level = new Level(1); // ADD HERE
+    this.levelNum = 1;
+    this.level = new Level(this.levelNum); // ADD HERE
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
@@ -29,6 +30,7 @@ class Game {
     setInterval(this.draw.bind(this, this.ctx), 100);
     setInterval(this.moveObjects.bind(this), 100);
     setInterval(this.level.checkToppingBounds.bind(this.level), 100);
+    setInterval(this.level.isOver.bind(this.level), 100);
   }
 
   // startGame()

@@ -1,20 +1,23 @@
 import FoodItem from "./food_item";
 import Topping from "./topping";
 
+const DIM_X = 800;
+const DIM_Y = 600;
+
 const LEVELVARIABLES = {
-  1: [1, 15, 2000, 10],
-  2: [2, 20, 2000, 20]
+  1: [1, 15, 2000, 10, 10],
+  2: [2, 20, 2000, 20, 15]
 }
-// difficulty, totalFoodItems, intervalDuration, foodItemVel
+// levelNum, totalFoodItems, intervalDuration, foodItemVel, correctItemsNeeded
 // LEVELVARIABLES[1][3] will get 10
 
 class Level {
-  constructor(difficulty) {
-    this.difficulty = difficulty;
+  constructor(levelNum) {
+    this.levelNum = levelNum;
     // if(difficulty === 1) {
     //   this.totalFoodItems = 15;
     // }
-    this.totalFoodItems = LEVELVARIABLES[this.difficulty][1]; // total food items
+    this.totalFoodItems = LEVELVARIABLES[this.levelNum][1]; // total food items
     this.allFoodItems = [];
     this.numItems = 0;
     this.intervalId = undefined;
@@ -28,14 +31,14 @@ class Level {
   }
 
   fillFoodItems() {
-    this.intervalId = setInterval(this.createFoodItem.bind(this), LEVELVARIABLES[this.difficulty][2]);  // intervalDuration
+    this.intervalId = setInterval(this.createFoodItem.bind(this), LEVELVARIABLES[this.levelNum][2]);  // intervalDuration
   }
 
   createFoodItem() {
     let keys = Object.keys(FoodItem.FOODITEMS);
     let randPos = Math.floor(Math.random() * 4);
     let colorValue = keys[randPos];
-    let newFoodItem = new FoodItem(LEVELVARIABLES[this.difficulty][3], colorValue); //velocity 
+    let newFoodItem = new FoodItem(LEVELVARIABLES[this.levelNum][3], colorValue); //velocity 
     this.allFoodItems.push(newFoodItem);
     this.numItems += 1;
     if (this.numItems === this.totalFoodItems) {
@@ -87,6 +90,28 @@ class Level {
       return true;
     } else {
       return false;
+    }
+  }
+
+  isOver() {
+    // allFoodItems.length === totalFoodItems and the last foodItem's x pos is greater than DIM X
+    if (this.allFoodItems.length === LEVELVARIABLES[this.levelNum][1] && this.allFoodItems[this.allFoodItems.length - 1].pos[0] >= DIM_X) {
+      return this.levelResult();
+    } else {
+      return false;
+    }
+    
+  }
+
+  levelResult() {
+    // returns win or lose
+    // If score is greater/equal to correctItemsNeeded
+    if (this.score >= LEVELVARIABLES[this.levelNum][4]) {
+      alert("You Win");
+      return "win";
+    } else {
+      alert("You Lose");
+      return "lose";
     }
   }
 
