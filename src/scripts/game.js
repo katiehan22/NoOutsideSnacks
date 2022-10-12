@@ -9,7 +9,7 @@ const NUM_FOOD_ITEMS = 10;
 
 class Game {
   constructor(el){
-    this.el = el; // el is the document query selecter for .canvas-div
+    this.el = el; 
     this.background = new Image();
     this.background.src = "assets/images/concessions4.png";
     this.createMutePause();
@@ -18,29 +18,13 @@ class Game {
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
     this.level = new Level(1); // ADD HERE
-    // this.correctSound = new Audio("assets/audio/correct.wav");
-    // this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
-    // this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
-    // this.backgroundMusic.play();
     this.handleClick = this.handleClick.bind(this);
     this.bindEvents();
   }
 
-  // fillFoodItems () {
-  //   this.intervalId = setInterval(this.createFoodItem.bind(this), 2000);
-  // }
-
-  // createFoodItem() {
-  //   let keys = Object.keys(FoodItem.FOODITEMS);
-  //   let randPos = Math.floor(Math.random() * 4);
-  //   let colorValue = keys[randPos];
-  //   let newFoodItem = new FoodItem(10, colorValue);
-  //   this.allFoodItems.push(newFoodItem);
-  //   this.numItems += 1;
-  //   if (this.numItems === NUM_FOOD_ITEMS) {
-  //     clearInterval(this.intervalId);
-  //   }
-  // }
+  // startGame()
+  // Creates new Level(1)
+  // If level1.
 
   createMutePause() {
     const ul = document.createElement("ul");
@@ -138,12 +122,6 @@ class Game {
     }
   }
 
-  // checkToppingBounds() {
-  //   if (this.allToppings.length > 0 && this.allToppings[0].outOfBounds()) {
-  //     this.allToppings = this.allToppings.slice(1);
-  //   }
-  // }
-
   bindEvents() {
     let ul = document.querySelector(".dispenser-machines")
     ul.addEventListener("click", this.handleClick);
@@ -183,47 +161,6 @@ class Game {
       this.paused = false;
     }
   }
-
-  // getBelowFoodItem(newTopping) {
-  //   // Checks if there are any food items with an x-pos within the range of the clicked topping 
-  //   // Returns the food item
-  //   let belowFoodItem = null;
-  //   for(let i = 0; i < this.allFoodItems.length; i++) {
-  //     let foodItem = this.allFoodItems[i];
-  //     if (foodItem.pos[0] >= (newTopping.pos[0] - 125) && foodItem.pos[0] <= (newTopping.pos[0] - 10)) {
-  //       belowFoodItem = foodItem;
-  //       console.log(foodItem);
-  //       console.log(newTopping);
-  //     }
-  //   }
-  //   if (belowFoodItem != null && belowFoodItem.topping === null) {
-  //     this.addTopping(belowFoodItem, newTopping);
-  //   }
-  //   return belowFoodItem;
-  // }
-
-  // addTopping(belowFoodItem, newTopping) {
-  //   // Already checked that fooditem's topping is null
-  //   // Check if match is correct
-  //   // If dispenser matches food item, update fooditem.topping, change image to correct, add to the score
-  //   // If does not match, update fooditem.topping to incorrect, change image to incorrect 
-  //   if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
-  //     belowFoodItem.swapImage("correct");
-  //     this.correctSound.play();
-  //     this.score += 1;
-  //   } else {
-  //     belowFoodItem.swapImage("incorrect");
-  //     this.incorrectSound.play();
-  //   }
-  // }
-
-  // checkCorrectMatch(belowFoodItem, newTopping) {
-  //   if ((belowFoodItem.name === "hotdog" && newTopping.name === "hotdog-img") || (belowFoodItem.name === "popcorn" && newTopping.name === "popcorn-img") || (belowFoodItem.name === "slushee" && newTopping.name === "slushee-img") || (belowFoodItem.name === "pretzel" && newTopping.name === "pretzel-img")) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
 }
 
 export default Game

@@ -8,7 +8,7 @@ class Level {
       this.totalFoodItems = 15;
     }
     this.allFoodItems = [];
-    this.numItems = 0;  // Num items that have been created. Increments when a new item is created 
+    this.numItems = 0;
     this.intervalId = undefined;
     this.fillFoodItems();
     this.allToppings = [];
