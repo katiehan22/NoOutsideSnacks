@@ -63,14 +63,6 @@ class FoodItem extends MovingObject {
     }
   }
 
-  // outOfBounds() {
-  //   if (this.pos[0] > DIM_X) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   static get FOODITEMS() {
     return FOODITEMS;
   }

@@ -16,6 +16,10 @@ class Game {
     this.paused = false;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
+    this.levelsScreen = document.querySelector(".levels-screen");
+    this.levelsScreen.style.display = "none";
+    this.endScreen = document.querySelector(".end-screen");
+    this.endScreen.style.display = "none";
     this.levelNum = 1;
     this.level = new Level(this.levelNum); // ADD HERE
     this.handleClick = this.handleClick.bind(this);
@@ -41,15 +45,27 @@ class Game {
   }
 
   levelResult() {
-    // returns win or lose
+    // If win, show levels screen
+    // If lose, show end screen
     // If score is greater/equal to correctItemsNeeded
     if (this.level.score >= Level.LEVELVARIABLES[this.level.levelNum][4]) {
-      alert("You Win");
-      return "win";
+      this.showLevelsScreen();
     } else {
-      alert("You Lose");
-      return "lose";
+      this.showEndScreen();
     }
+  }
+
+  showLevelsScreen() {
+    let levelSummary = document.querySelector(".level-summary");
+    let levelReq = document.querySelector(".level-req");
+    levelSummary.innerHTML = `You fulfilled ${this.level.score} out of ${Level.LEVELVARIABLES[this.level.levelNum][1]} orders!`;
+    levelReq.innerHTML = `In Level ${this.levelNum + 1}, you need to fulfill ${Level.LEVELVARIABLES[this.levelNum + 1][4]} out of ${Level.LEVELVARIABLES[this.levelNum + 1][1]} orders.`;
+    this.levelsScreen.style.display = "";
+  }
+
+  showEndScreen() {
+    // Code to customize text inside end screen
+    this.endScreen.style.display = "";
   }
 
   createMutePause() {

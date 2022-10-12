@@ -5,9 +5,10 @@ const DIM_X = 800;
 const DIM_Y = 600;
 
 const LEVELVARIABLES = {
-  1: [1, 15, 2000, 10, 10],
+  1: [1, 2, 2000, 10, 1], 
   2: [2, 20, 2000, 20, 15]
 }
+// For testing: totalFoodItems(pos 1 - prev 15), correctItemsNeeded(pos 4 - prev 10)
 // levelNum, totalFoodItems, intervalDuration, foodItemVel, correctItemsNeeded
 // LEVELVARIABLES[1][3] will get 10
 
