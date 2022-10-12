@@ -21,7 +21,7 @@ class Game {
     this.levelsScreen = document.querySelector(".levels-screen");
     this.endScreen = document.querySelector(".end-screen");
     this.levelNum = 1;
-    this.level = new Level(this.levelNum); // ADD HERE
+    this.level = new Level(this.levelNum); 
     this.intervalIdToppingBounds = undefined;
     this.handleClick = this.handleClick.bind(this);
     this.startNextLevel = this.startNextLevel.bind(this);

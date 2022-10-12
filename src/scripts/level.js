@@ -23,20 +23,14 @@ const LEVELVARIABLES = {
 class Level {
   constructor(levelNum) {
     this.levelNum = levelNum;
-    // if(difficulty === 1) {
-    //   this.totalFoodItems = 15;
-    // }
     this.totalFoodItems = LEVELVARIABLES[this.levelNum][1]; // total food items
     this.allFoodItems = [];
     this.numItems = 0;
-    this.intervalId = undefined;
-    this.fillFoodItems();
     this.allToppings = [];
     this.score = 0;
-    this.correctSound = new Audio("assets/audio/correct.wav");
-    this.incorrectSound = new Audio("assets/audio/incorrect.mp3");
-    // this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
-    // this.backgroundMusic.play();
+    this.intervalId = undefined;
+    this.createFoodItem();  // call it once in the beginning so it starts without pause
+    this.fillFoodItems();
   }
 
   fillFoodItems() {
@@ -76,7 +70,6 @@ class Level {
 
   getBelowFoodItem(newTopping) {
     // Checks if there are any food items with an x-pos within the range of the clicked topping 
-    // Returns the food item
     let belowFoodItem = null;
     for (let i = 0; i < this.allFoodItems.length; i++) {
       let foodItem = this.allFoodItems[i];
@@ -91,17 +84,15 @@ class Level {
   }
 
   addTopping(belowFoodItem, newTopping) {
-    // Already checked that fooditem's topping is null
-    // Check if match is correct
-    // If dispenser matches food item, update fooditem.topping, change image to correct, add to the score
-    // If does not match, update fooditem.topping to incorrect, change image to incorrect 
     if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
       belowFoodItem.swapImage("correct");
-      this.correctSound.play();
+      let correctSound1 = new Audio("assets/audio/correct.wav");
+      correctSound1.play();
       this.score += 1;
     } else {
       belowFoodItem.swapImage("incorrect");
-      this.incorrectSound.play();
+      let incorrectSound1 = new Audio("assets/audio/incorrect.mp3");
+      incorrectSound1.play();
     }
   }
 
