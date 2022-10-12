@@ -17,7 +17,8 @@ const LEVELVARIABLES = {
 // PREV
 // 1: [1, 15, 2000, 10, 10], 
 // 2: [2, 15, 2000, 16, 10],
-// 3: [new]
+// 3: [3, 10, 4000, 10, 5]  // change totalItems and correctitems
+// 4: [4, 10, 4000, 14, 5]  // change totalItems and correctitems
 
 class Level {
   constructor(levelNum) {

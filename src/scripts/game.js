@@ -48,11 +48,16 @@ class Game {
   }
 
   levelResult() {
-    // If win, show levels screen
-    // If lose, show end screen
-    // If score is greater/equal to correctItemsNeeded
-    if (this.level.score >= Level.LEVELVARIABLES[this.level.levelNum][4]) {
-      this.showLevelsScreen();
+    // If level num 1-3, 
+      // If win (score is greater/equal to correctItemsNeeded), show levels screen
+      // If lose, show end screen
+    // Else (level = 4, last), show end screen
+    if (this.levelNum <= 3) {
+      if (this.level.score >= Level.LEVELVARIABLES[this.level.levelNum][4]) {
+        this.showLevelsScreen();
+      } else {
+        this.showEndScreen();
+      }
     } else {
       this.showEndScreen();
     }
@@ -61,13 +66,19 @@ class Game {
   showLevelsScreen() {
     let levelSummary = document.querySelector(".level-summary");
     let levelReq = document.querySelector(".level-req");
-    levelSummary.innerHTML = `You fulfilled ${this.level.score} out of ${Level.LEVELVARIABLES[this.level.levelNum][1]} orders!`;
-    levelReq.innerHTML = `In Level ${this.levelNum + 1}, you need to fulfill ${Level.LEVELVARIABLES[this.levelNum + 1][4]} out of ${Level.LEVELVARIABLES[this.levelNum + 1][1]} orders.`;
+    levelSummary.innerHTML = `You fulfilled ${this.level.score} out of ${Level.LEVELVARIABLES[this.level.levelNum][1]} items!`;
+    levelReq.innerHTML = `In Level ${this.levelNum + 1}, you need to fulfill ${Level.LEVELVARIABLES[this.levelNum + 1][4]} out of ${Level.LEVELVARIABLES[this.levelNum + 1][1]} items.`;
     this.levelsScreen.style.display = "block";
   }
 
   showEndScreen() {
-    // Code to customize text inside end screen
+    // If won, show you won. Else, show you lost.
+    let gameSummary = document.querySelector(".game-summary");
+    if (this.level.score >= Level.LEVELVARIABLES[this.level.levelNum][4]) {
+      gameSummary.innerHTML = 'You won!';
+    } else {
+      gameSummary.innerHTML = 'You lost!';
+    }
     this.endScreen.style.display = "block";
   }
 
