@@ -17,11 +17,11 @@ class Game {
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
     this.levelsScreen = document.querySelector(".levels-screen");
-    console.log(this.levelsScreen.style);
     this.endScreen = document.querySelector(".end-screen");
     this.levelNum = 1;
     this.level = new Level(this.levelNum); // ADD HERE
     this.handleClick = this.handleClick.bind(this);
+    this.startNextLevel = this.startNextLevel.bind(this);
     this.bindEvents();
   }
 
@@ -172,6 +172,9 @@ class Game {
 
     let pauseButton = document.querySelector("#pause-img");
     pauseButton.addEventListener("click", this.togglePause);
+
+    let nextLevelButton = document.querySelector("#next-level-button");
+    nextLevelButton.addEventListener("click", this.startNextLevel);
   }
 
   handleClick(e) {
@@ -201,6 +204,12 @@ class Game {
     } else {
       this.paused = false;
     }
+  }
+
+  startNextLevel(e) {
+    this.levelsScreen.style.display = "none";
+    this.levelNum += 1;
+    this.level = new Level(this.levelNum);
   }
 }
 

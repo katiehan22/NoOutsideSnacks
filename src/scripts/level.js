@@ -6,11 +6,16 @@ const DIM_Y = 600;
 
 const LEVELVARIABLES = {
   1: [1, 2, 2000, 10, 1], 
-  2: [2, 20, 2000, 20, 15]
+  2: [2, 5, 2000, 20, 2],
+  3: [1, 2, 2000, 10, 1]
 }
-// For testing: totalFoodItems(pos 1 - prev 15), correctItemsNeeded(pos 4 - prev 10)
+// Need to change level 3
 // levelNum, totalFoodItems, intervalDuration, foodItemVel, correctItemsNeeded
 // LEVELVARIABLES[1][3] will get 10
+// PREV
+// 1: [1, 15, 2000, 10, 10], 
+// 2: [2, 20, 2000, 20, 15]
+// 3: [1, 2, 2000, 10, 1]
 
 class Level {
   constructor(levelNum) {
