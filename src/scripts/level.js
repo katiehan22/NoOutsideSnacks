@@ -1,12 +1,20 @@
 import FoodItem from "./food_item";
 import Topping from "./topping";
 
+const LEVELVARIABLES = {
+  1: [1, 15, 2000, 10],
+  2: [2, 20, 2000, 20]
+}
+// difficulty, totalFoodItems, intervalDuration, foodItemVel
+// LEVELVARIABLES[1][3] will get 10
+
 class Level {
   constructor(difficulty) {
     this.difficulty = difficulty;
-    if(difficulty === 1) {
-      this.totalFoodItems = 15;
-    }
+    // if(difficulty === 1) {
+    //   this.totalFoodItems = 15;
+    // }
+    this.totalFoodItems = LEVELVARIABLES[this.difficulty][1]; // total food items
     this.allFoodItems = [];
     this.numItems = 0;
     this.intervalId = undefined;
@@ -20,14 +28,14 @@ class Level {
   }
 
   fillFoodItems() {
-    this.intervalId = setInterval(this.createFoodItem.bind(this), 2000);
+    this.intervalId = setInterval(this.createFoodItem.bind(this), LEVELVARIABLES[this.difficulty][2]);  // intervalDuration
   }
 
   createFoodItem() {
     let keys = Object.keys(FoodItem.FOODITEMS);
     let randPos = Math.floor(Math.random() * 4);
     let colorValue = keys[randPos];
-    let newFoodItem = new FoodItem(10, colorValue);
+    let newFoodItem = new FoodItem(LEVELVARIABLES[this.difficulty][3], colorValue); //velocity 
     this.allFoodItems.push(newFoodItem);
     this.numItems += 1;
     if (this.numItems === this.totalFoodItems) {
