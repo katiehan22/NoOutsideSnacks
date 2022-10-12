@@ -19,10 +19,10 @@ const FOODITEMS = {
 }
 
 class FoodItem extends MovingObject {
-  constructor(vel, name) {
+  constructor(pos, vel, name) {
     const img = new Image();
     img.src = FOODITEMS[name];
-    super([0, 450], vel, img);
+    super(pos, vel, img);
     this.name = name;
     this.topping = null;
   }

@@ -6,16 +6,18 @@ const DIM_Y = 600;
 
 const LEVELVARIABLES = {
   1: [1, 2, 2000, 10, 1], 
-  2: [2, 15, 2000, 16, 10],
-  3: [1, 2, 2000, 10, 1]
+  2: [2, 2, 2000, 16, 1],
+  3: [1, 10, 4000, 10, 5],
+  4: [1, 10, 4000, 14, 5], 
+  5: [1, 2, 2000, 10, 1]
 }
-// Need to change level 3
+// Need to change level 3 and 4
 // levelNum, totalFoodItems, intervalDuration, foodItemVel, correctItemsNeeded
 // LEVELVARIABLES[1][3] will get 10
 // PREV
 // 1: [1, 15, 2000, 10, 10], 
-// 2: [2, 20, 2000, 20, 15]
-// 3: [1, 2, 2000, 10, 1]
+// 2: [2, 15, 2000, 16, 10],
+// 3: [new]
 
 class Level {
   constructor(levelNum) {
@@ -44,16 +46,28 @@ class Level {
     let keys = Object.keys(FoodItem.FOODITEMS);
     let randPos = Math.floor(Math.random() * 4);
     let colorValue = keys[randPos];
-    let newFoodItem = new FoodItem(LEVELVARIABLES[this.levelNum][3], colorValue); //velocity 
-    this.allFoodItems.push(newFoodItem);
-    this.numItems += 1;
+    if(this.levelNum === 1 || this.levelNum === 2) {
+      let newFoodItem = new FoodItem([0, 450], LEVELVARIABLES[this.levelNum][3], colorValue); //velocity 
+      this.allFoodItems.push(newFoodItem);
+      this.numItems += 1;
+    } else if (this.levelNum === 3 || this.levelNum === 4) {
+      let newFoodItem = new FoodItem([0, 450], LEVELVARIABLES[this.levelNum][3], colorValue); //velocity 
+      this.allFoodItems.push(newFoodItem);
+
+      randPos = Math.floor(Math.random() * 4);
+      colorValue = keys[randPos];
+      let newFoodItem2 = new FoodItem([-90, 450], LEVELVARIABLES[this.levelNum][3], colorValue);
+      this.allFoodItems.push(newFoodItem2);
+
+      this.numItems += 2;
+    }
+
     if (this.numItems === this.totalFoodItems) {
       clearInterval(this.intervalId);
     }
   }
 
   checkToppingBounds() {
-    console.log(this.allToppings);
     if (this.allToppings.length > 0 && this.allToppings[0].outOfBounds()) {
       this.allToppings = this.allToppings.slice(1);
     }
