@@ -20,7 +20,7 @@ class Game {
     this.scoreImg.src = "assets/images/starscore.png";
     this.levelsScreen = document.querySelector(".levels-screen");
     this.endScreen = document.querySelector(".end-screen");
-    this.levelNum = 4;
+    this.levelNum = 1;
     this.level = new Level(this.levelNum); // ADD HERE
     this.intervalIdToppingBounds = undefined;
     this.handleClick = this.handleClick.bind(this);

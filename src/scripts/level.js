@@ -7,9 +7,9 @@ const DIM_Y = 600;
 const LEVELVARIABLES = {
   1: [1, 2, 2000, 10, 1], 
   2: [2, 2, 2000, 16, 1],
-  3: [1, 10, 4000, 10, 5],
-  4: [1, 10, 4000, 14, 5], 
-  5: [1, 2, 2000, 10, 1]
+  3: [3, 10, 4000, 10, 5],
+  4: [4, 10, 4000, 14, 5], 
+  5: [5, 2, 2000, 10, 1]
 }
 // Need to change level 3 and 4
 // levelNum, totalFoodItems, intervalDuration, foodItemVel, correctItemsNeeded
