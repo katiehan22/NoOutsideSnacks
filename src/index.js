@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvasDiv = document.querySelector(".canvas-div");
   const gameCanvas = document.getElementById("game-canvas");
 
-  const game = new Game(ctx, canvasDiv);
-  game.start();
+  // const game = new Game(ctx, canvasDiv);
+  // game.start();
 
-  // startButton.addEventListener("click", function(){
-  //   titleScreen.style.display = "none";
-  //   canvasDiv.style.display = "block";
-  //   gameCanvas.style.display = "block";
+  startButton.addEventListener("click", function(){
+    titleScreen.style.display = "none";
+    canvasDiv.style.display = "block";
+    gameCanvas.style.display = "block";
 
-  //   const game = new Game(ctx, canvasDiv);
-  //   game.start();
-  // })
+    const game = new Game(ctx, canvasDiv);
+    game.start();
+  })
 })

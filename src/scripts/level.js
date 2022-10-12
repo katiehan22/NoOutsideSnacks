@@ -61,8 +61,6 @@ class Level {
       let foodItem = this.allFoodItems[i];
       if (foodItem.pos[0] >= (newTopping.pos[0] - 125) && foodItem.pos[0] <= (newTopping.pos[0] - 10)) {
         belowFoodItem = foodItem;
-        console.log(foodItem);
-        console.log(newTopping);
       }
     }
     if (belowFoodItem != null && belowFoodItem.topping === null) {

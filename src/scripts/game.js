@@ -17,9 +17,8 @@ class Game {
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
     this.levelsScreen = document.querySelector(".levels-screen");
-    this.levelsScreen.style.display = "none";
+    console.log(this.levelsScreen.style);
     this.endScreen = document.querySelector(".end-screen");
-    this.endScreen.style.display = "none";
     this.levelNum = 1;
     this.level = new Level(this.levelNum); // ADD HERE
     this.handleClick = this.handleClick.bind(this);
@@ -60,12 +59,12 @@ class Game {
     let levelReq = document.querySelector(".level-req");
     levelSummary.innerHTML = `You fulfilled ${this.level.score} out of ${Level.LEVELVARIABLES[this.level.levelNum][1]} orders!`;
     levelReq.innerHTML = `In Level ${this.levelNum + 1}, you need to fulfill ${Level.LEVELVARIABLES[this.levelNum + 1][4]} out of ${Level.LEVELVARIABLES[this.levelNum + 1][1]} orders.`;
-    this.levelsScreen.style.display = "";
+    this.levelsScreen.style.display = "block";
   }
 
   showEndScreen() {
     // Code to customize text inside end screen
-    this.endScreen.style.display = "";
+    this.endScreen.style.display = "block";
   }
 
   createMutePause() {
