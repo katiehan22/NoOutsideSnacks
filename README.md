@@ -1,16 +1,16 @@
 # No Outside Snacks
 
 ## Background
-No Outside Snacks is a movie theater concession stand themed game. There will be 4 dispensers - movie theater butter, slushee, mustard, and pretzel salt. Trays of food will move across the bottom of the screen. The user must match the correct topping with the food item and get enough points to move on to the next level. The levels with progressively get harder with the food items moving faster and the orders getting larger. 
+No Outside Snacks is a movie theater concession stand themed game. Food orders will move across the bottom of the screen. The player must match the correct topping with the food item to earn enough points to move on to the next level. The player advances through 4 levels with the levels progressively get harder as the food items move faster and the orders get larger. 
 
 ## Functionality and MVPs
-Players will be able to: 
-* Control which food dispenser use by hovering with the mouse.
-* Dispense the topping onto the food item with a click.
-* Keep track of their score and earn enough points to move onto the next level.
+Players are able to: 
+* Control which topping dispenser use by hovering with the mouse.
+* Dispense the topping onto the food item with a click. The food image will change to indicate whether or not the player was correcrt and earned a point. 
+* Keep track of their score and earn enough points to advance through the 4 levels.
 
 Additional Features:
-* Music: Background music and sound effects based on different actions.
+* Music: Background music and sound effects based on different actions, with a mute button. 
 
 ## Wireframe
 ![Imgur](https://i.imgur.com/ZbzP84h.png)
@@ -35,5 +35,5 @@ This project will be implemented with the following technologies:
 * Thursday Morning
   * Deploy to GitHub pages.
 
-## Bonus Features
-* 
+## Game Screenshot
+![Screenshot](assets/images/screenshot.png)

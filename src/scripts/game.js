@@ -12,9 +12,8 @@ class Game {
     this.background.src = "assets/images/concessions4.png";
     this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
     this.backgroundMusic.loop = true;
-    this.createMutePause();
+    this.createMute();
     this.createDispensers();
-    // this.paused = false;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
     this.levelsScreen = document.querySelector(".levels-screen");
@@ -92,7 +91,7 @@ class Game {
     this.endScreen.style.display = "block";
   }
 
-  createMutePause() {
+  createMute() {
     const ul = document.createElement("ul");
     ul.classList.add("game-buttons");
     this.el.appendChild(ul);
@@ -104,15 +103,7 @@ class Game {
     imgMute.id = "mute-img";
     mute.appendChild(imgMute);
 
-    // let pause = document.createElement("li");
-    // pause.classList.add("pause");
-    // let imgPause = document.createElement("img");
-    // imgPause.src = "assets/images/buttonpause.png";
-    // imgPause.id = "pause-img";
-    // pause.appendChild(imgPause);
-
     ul.appendChild(mute);
-    // ul.appendChild(pause);
   }
 
   createDispensers() {
@@ -195,9 +186,6 @@ class Game {
     let muteButton = document.querySelector("#mute-img");
     muteButton.addEventListener("click", this.handleMute);
 
-    // let pauseButton = document.querySelector("#pause-img");
-    // pauseButton.addEventListener("click", this.togglePause);
-
     let nextLevelButton = document.querySelector("#next-level-button");
     nextLevelButton.addEventListener("click", this.startNextLevel);
 
@@ -227,14 +215,6 @@ class Game {
       muteButton.src = "assets/images/buttonunmute.png";
     }
   }
-
-  // togglePause(e) {
-  //   if (this.paused === false || this.paused === undefined) {
-  //     this.paused = true;
-  //   } else {
-  //     this.paused = false;
-  //   }
-  // }
 
   startNextLevel(e) {
     this.levelsScreen.style.display = "none";
