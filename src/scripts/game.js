@@ -20,6 +20,11 @@ class Game {
     this.endScreen = document.querySelector(".end-screen");
     this.levelNum = 1;
     this.level; 
+    if (this.levelNum === 1 || this.levelNum === 3) {
+      this.toppingVel = 20;
+    } else {
+      this.toppingVel = 25;
+    }
     this.intervalIdToppingBounds = undefined;
     this.intervalIdIsOver = undefined;
     this.firstGame = true;
@@ -199,7 +204,7 @@ class Game {
   handleClick(e) {
     let selectedImg = e.target;
     if (selectedImg.nodeName === "IMG") {
-      let newTopping = new Topping(selectedImg.id);
+      let newTopping = new Topping(selectedImg.id, this.toppingVel);
       this.level.allToppings.push(newTopping);
       this.level.getBelowFoodItem(newTopping);
     }

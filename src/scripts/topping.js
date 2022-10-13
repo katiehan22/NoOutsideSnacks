@@ -1,5 +1,5 @@
 class Topping {
-  constructor(name) {
+  constructor(name, vel) {
     this.name = name;
     if (name === "slushee-img") {
       this.color = "#FE2F92";
@@ -14,6 +14,7 @@ class Topping {
       this.color = "white";
       this.pos = [668, 350];
     }
+    this.vel = vel; // 20 and 25
   }
 
   draw(ctx) {
@@ -22,7 +23,7 @@ class Topping {
   }
 
   move() {
-    this.pos = [this.pos[0], this.pos[1] + 20];
+    this.pos = [this.pos[0], this.pos[1] + this.vel];
   }
 
   outOfBounds() {
