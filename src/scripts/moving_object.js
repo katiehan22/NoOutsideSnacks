@@ -3,7 +3,6 @@ class MovingObject {
     this.pos = pos;
     this.vel = vel;
     this.img = img;
-    // this.game = object.game;
   }
 
   draw(ctx) {  

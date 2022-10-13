@@ -12,7 +12,7 @@
 .dispenser-machines {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 90px;
   margin-left: 60px;
 }
 
@@ -25,14 +25,12 @@
   margin-right: 30px;
 }
 
-.mute, .pause {
+.mute {
   max-width: 50px;
   max-height: 50px;
-  // float: right;
 }
 
-.mute:hover, .pause:hover {
-  // box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+.mute:hover {
   box-shadow: rgba(240, 224, 46, 0.4) -4px -4px;
   cursor: pointer;
 }

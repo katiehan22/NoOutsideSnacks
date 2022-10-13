@@ -1,24 +1,15 @@
 import FoodItem from "./food_item";
-import Topping from "./topping";
 
 const DIM_X = 800;
 const DIM_Y = 600;
 
 const LEVELVARIABLES = {
-  1: [1, 2, 2000, 10, 1], 
-  2: [2, 2, 2000, 16, 1],
-  3: [3, 10, 4000, 10, 5],
-  4: [4, 10, 4000, 14, 5], 
-  5: [5, 2, 2000, 10, 1]
+  1: [1, 15, 2000, 10, 10], 
+  2: [2, 15, 2000, 16, 10],
+  3: [3, 20, 4000, 10, 15],
+  4: [4, 20, 4000, 14, 15] 
 }
-// Need to change level 3 and 4
 // levelNum, totalFoodItems, intervalDuration, foodItemVel, correctItemsNeeded
-// LEVELVARIABLES[1][3] will get 10
-// PREV
-// 1: [1, 15, 2000, 10, 10], 
-// 2: [2, 15, 2000, 16, 10],
-// 3: [3, 10, 4000, 10, 5]  // change totalItems and correctitems
-// 4: [4, 10, 4000, 14, 5]  // change totalItems and correctitems
 
 class Level {
   constructor(levelNum) {
@@ -29,7 +20,7 @@ class Level {
     this.allToppings = [];
     this.score = 0;
     this.intervalId = undefined;
-    this.createFoodItem();  // call it once in the beginning so it starts without pause
+    this.createFoodItem();  // call it once in the beginning so it starts without waiting for the interval 
     this.fillFoodItems();
   }
 

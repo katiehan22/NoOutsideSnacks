@@ -1,19 +1,6 @@
 class Topping {
   constructor(name) {
     this.name = name;
-    // if (name === "slushee-img") {
-    //   this.color = "#FE2F92";
-    //   this.pos = [143, 350];
-    // } else if (name === "hotdog-img") {
-    //   this.color = "yellow";
-    //   this.pos = [308, 350];
-    // } else if (name === "popcorn-img") {
-    //   this.color = "#F6B977";
-    //   this.pos = [474, 350];
-    // } else {  // salt
-    //   this.color = "white";
-    //   this.pos = [639, 350];
-    // }
     if (name === "slushee-img") {
       this.color = "#FE2F92";
       this.pos = [173, 350];

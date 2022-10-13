@@ -1,4 +1,3 @@
-import FoodItem from "./food_item";
 import Topping from "./topping";
 import Level from "./level";
 
@@ -15,22 +14,30 @@ class Game {
     this.backgroundMusic.play();
     this.createMutePause();
     this.createDispensers();
-    this.paused = false;
+    // this.paused = false;
     this.scoreImg = new Image();
     this.scoreImg.src = "assets/images/starscore.png";
     this.levelsScreen = document.querySelector(".levels-screen");
     this.endScreen = document.querySelector(".end-screen");
     this.levelNum = 1;
-    this.level = new Level(this.levelNum); 
+    this.level; 
     this.intervalIdToppingBounds = undefined;
+    this.firstGame = true;
     this.handleClick = this.handleClick.bind(this);
     this.startNextLevel = this.startNextLevel.bind(this);
     this.restartGame = this.restartGame.bind(this);
+    this.backToHome = this.backToHome.bind(this);
+    this.handleMute = this.handleMute.bind(this);
     this.bindEvents();
   }
 
   start() {
-    this.step();
+    if(this.firstGame) {
+      this.level = new Level(this.levelNum); 
+      this.step();
+    } else {
+      this.restartGame();
+    }
   }
 
   step() {
@@ -94,15 +101,15 @@ class Game {
     imgMute.id = "mute-img";
     mute.appendChild(imgMute);
 
-    let pause = document.createElement("li");
-    pause.classList.add("pause");
-    let imgPause = document.createElement("img");
-    imgPause.src = "assets/images/buttonpause.png";
-    imgPause.id = "pause-img";
-    pause.appendChild(imgPause);
+    // let pause = document.createElement("li");
+    // pause.classList.add("pause");
+    // let imgPause = document.createElement("img");
+    // imgPause.src = "assets/images/buttonpause.png";
+    // imgPause.id = "pause-img";
+    // pause.appendChild(imgPause);
 
     ul.appendChild(mute);
-    ul.appendChild(pause);
+    // ul.appendChild(pause);
   }
 
   createDispensers() {
@@ -127,14 +134,14 @@ class Game {
     let dispenserPopcorn = document.createElement("li");
     dispenserPopcorn.classList.add("popcorn");
     let imgPopcorn = document.createElement("img");
-    imgPopcorn.src = "assets/images/dispenserbutter.png";
+    imgPopcorn.src = "assets/images/dispenserbutter2.png";
     imgPopcorn.id = "popcorn-img";
     dispenserPopcorn.appendChild(imgPopcorn);
 
     let dispenserPretzel = document.createElement("li");
     dispenserPretzel.classList.add("pretzel");
     let imgPretzel = document.createElement("img");
-    imgPretzel.src = "assets/images/dispensersalt.png";
+    imgPretzel.src = "assets/images/dispensersalt2.png";
     imgPretzel.id = "pretzel-img";
     dispenserPretzel.appendChild(imgPretzel);
 
@@ -185,14 +192,17 @@ class Game {
     let muteButton = document.querySelector("#mute-img");
     muteButton.addEventListener("click", this.handleMute);
 
-    let pauseButton = document.querySelector("#pause-img");
-    pauseButton.addEventListener("click", this.togglePause);
+    // let pauseButton = document.querySelector("#pause-img");
+    // pauseButton.addEventListener("click", this.togglePause);
 
     let nextLevelButton = document.querySelector("#next-level-button");
     nextLevelButton.addEventListener("click", this.startNextLevel);
 
     let restartButton = document.querySelector("#restart-button");
     restartButton.addEventListener("click", this.restartGame);
+
+    let backHomeButton = document.querySelector("#home-button");
+    backHomeButton.addEventListener("click", this.backToHome);
   }
 
   handleClick(e) {
@@ -205,24 +215,23 @@ class Game {
   }
 
   handleMute(e) {
+    let muteButton = document.querySelector("#mute-img");
     if (this.backgroundMusic.muted) {
       this.backgroundMusic.muted = false;
-      this.correctSound.muted = false;
-      this.incorrectSound.muted = false;
+      muteButton.src = "assets/images/buttonmute.png";
     } else {
       this.backgroundMusic.muted = true;
-      this.correctSound.muted = true;
-      this.incorrectSound.muted = true;
+      muteButton.src = "assets/images/buttonunmute.png";
     }
   }
 
-  togglePause(e) {
-    if (this.paused === false || this.paused === undefined) {
-      this.paused = true;
-    } else {
-      this.paused = false;
-    }
-  }
+  // togglePause(e) {
+  //   if (this.paused === false || this.paused === undefined) {
+  //     this.paused = true;
+  //   } else {
+  //     this.paused = false;
+  //   }
+  // }
 
   startNextLevel(e) {
     this.levelsScreen.style.display = "none";
@@ -238,6 +247,21 @@ class Game {
     this.level = new Level(this.levelNum);
     clearInterval(this.intervalIdToppingBounds);
     this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100)
+  }
+
+  backToHome(e) {
+    let titleScreen = document.querySelector(".title-screen");
+    let canvasDiv = document.querySelector(".canvas-div");
+    let gameCanvas = document.getElementById("game-canvas");
+
+    this.endScreen.style.display = "none";
+    canvasDiv.style.display = "none";
+    gameCanvas.style.display = "none";
+    titleScreen.style.display = "flex";
+
+    this.firstGame = false;
+
+    // clearInterval(this.intervalIdToppingBounds);
   }
 }
 
