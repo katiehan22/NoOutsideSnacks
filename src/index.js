@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameCanvas = document.getElementById("game-canvas");
 
   const game = new Game(ctx, canvasDiv);
+
   startButton.addEventListener("click", function(){
     titleScreen.style.display = "none";
     canvasDiv.style.display = "block";
     gameCanvas.style.display = "block";
 
-    // const game = new Game(ctx, canvasDiv);
     game.start();
   })
 })

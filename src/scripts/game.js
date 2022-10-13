@@ -11,7 +11,7 @@ class Game {
     this.background = new Image();
     this.background.src = "assets/images/concessions4.png";
     this.backgroundMusic = new Audio("assets/audio/ukulele.mp3");
-    this.backgroundMusic.play();
+    this.backgroundMusic.loop = true;
     this.createMutePause();
     this.createDispensers();
     // this.paused = false;
@@ -33,6 +33,7 @@ class Game {
 
   start() {
     if(this.firstGame) {
+      this.backgroundMusic.play();
       this.level = new Level(this.levelNum); 
       this.step();
     } else {
@@ -260,8 +261,6 @@ class Game {
     titleScreen.style.display = "flex";
 
     this.firstGame = false;
-
-    // clearInterval(this.intervalIdToppingBounds);
   }
 }
 
