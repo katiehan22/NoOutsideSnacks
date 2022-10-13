@@ -22,6 +22,7 @@ class Game {
     this.levelNum = 1;
     this.level; 
     this.intervalIdToppingBounds = undefined;
+    this.intervalIdIsOver = undefined;
     this.firstGame = true;
     this.handleClick = this.handleClick.bind(this);
     this.startNextLevel = this.startNextLevel.bind(this);
@@ -45,13 +46,14 @@ class Game {
     setInterval(this.draw.bind(this, this.ctx), 100);
     setInterval(this.moveObjects.bind(this), 100);
     this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100);
-    setInterval(this.isOver.bind(this), 100);
+    this.intervalIdIsOver = setInterval(this.isOver.bind(this), 100);
   }
 
   isOver() {
     // if allFoodItems.length === totalFoodItems and the last foodItem's x pos is greater than DIM X
     if (this.level.allFoodItems.length === Level.LEVELVARIABLES[this.level.levelNum][1] && this.level.allFoodItems[this.level.allFoodItems.length - 1].pos[0] >= DIM_X) {
       this.levelResult();
+      clearInterval(this.intervalIdIsOver);
     }
   }
 
@@ -239,7 +241,8 @@ class Game {
     this.levelNum += 1;
     this.level = new Level(this.levelNum);
     clearInterval(this.intervalIdToppingBounds);
-    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100)
+    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100);
+    this.intervalIdIsOver = setInterval(this.isOver.bind(this), 100);
   }
 
   restartGame(e) {
@@ -247,7 +250,8 @@ class Game {
     this.levelNum = 1;
     this.level = new Level(this.levelNum);
     clearInterval(this.intervalIdToppingBounds);
-    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100)
+    this.intervalIdToppingBounds = setInterval(this.level.checkToppingBounds.bind(this.level), 100);
+    this.intervalIdIsOver = setInterval(this.isOver.bind(this), 100);
   }
 
   backToHome(e) {
