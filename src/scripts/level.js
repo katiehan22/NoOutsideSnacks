@@ -20,6 +20,7 @@ class Level {
     this.allToppings = [];
     this.score = 0;
     this.intervalId = undefined;
+    this.muted = false;
     this.createFoodItem();  // call it once in the beginning so it starts without waiting for the interval 
     this.fillFoodItems();
   }
@@ -77,13 +78,17 @@ class Level {
   addTopping(belowFoodItem, newTopping) {
     if (this.checkCorrectMatch(belowFoodItem, newTopping) === true) {
       belowFoodItem.swapImage("correct");
-      let correctSound1 = new Audio("assets/audio/correct.wav");
-      correctSound1.play();
       this.score += 1;
+      if(this.muted === false) {
+        let correctSound1 = new Audio("assets/audio/correct.wav");
+        correctSound1.play();
+      }
     } else {
       belowFoodItem.swapImage("incorrect");
-      let incorrectSound1 = new Audio("assets/audio/incorrect.mp3");
-      incorrectSound1.play();
+      if(this.muted === false) {
+        let incorrectSound1 = new Audio("assets/audio/incorrect.mp3");
+        incorrectSound1.play();
+      }
     }
   }
 
@@ -92,6 +97,14 @@ class Level {
       return true;
     } else {
       return false;
+    }
+  }
+
+  toggleMute() {
+    if (this.muted === true) {
+      this.muted = false;
+    } else {
+      this.muted = true;
     }
   }
 

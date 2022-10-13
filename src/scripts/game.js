@@ -214,6 +214,7 @@ class Game {
       this.backgroundMusic.muted = true;
       muteButton.src = "assets/images/buttonunmute.png";
     }
+    this.level.toggleMute();
   }
 
   startNextLevel(e) {
