@@ -35,3 +35,10 @@
 #start-button:hover {
   box-shadow: 0 10px 10px 0 yellow;
 }
+
+.window-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}

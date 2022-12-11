@@ -13,43 +13,47 @@
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 <body>
-  <div class="header-img">
-    <img src="assets/images/header.png">
+  <div class="window-container">
+    <div class="game-container">
+      <div class="header-img">
+        <img src="assets/images/header.png">
+        
+        <ul class="icons">
+          <li id="github"><a href="https://github.com/katiehan22/NoOutsideSnacks" target="_blank"><img src="assets/images/icons/github-logo.png"></a></li>
+          <li id="linkedin"><a href="https://www.linkedin.com/in/katiehan22/" target="_blank"><img src="assets/images/icons/linkedin.png"></a>
+          </li>
+        </ul>
+      </div>
     
-    <ul class="icons">
-      <li id="github"><a href="https://github.com/katiehan22/NoOutsideSnacks"><img src="assets/images/icons/github-logo.png"></a></li>
-      <li id="linkedin"><a href="https://www.linkedin.com/in/katiehan22/"><img src="assets/images/icons/linkedin.png"></a>
-      </li>
-    </ul>
+      <div class="title-screen">
+        <img src="assets/images/concessions4.png">
+        <ul class="title-details">
+          <li class="context">Welcome to your movie theater!</li>
+          <li class="context">You will be running the concession stand.</li>
+          <li class="context">Keep customers happy by adding the correct
+          toppings to their food.</li>
+          <li class="context">To pass Level 1, you need to fulfill 10 out of 15 items.</li>
+        </ul>
+        <button id="start-button">START</button>
+      </div>
+    
+      <div class="levels-screen">
+          <h2>Nice Job!</h2>
+          <p class="level-summary"></p>
+          <p class="level-req"></p>
+          <button id="next-level-button">Next Level</button>
+      </div>
+    
+      <div class="end-screen">
+        <h2>Game Over</h2>
+        <p class="game-summary"></p>
+        <button id="restart-button">Play Again</button>
+        <button id="home-button">Back to Home</button>
+      </div>
+    
+      <div class="canvas-div"></div>
+      <canvas id="game-canvas" width="800" height="600"></canvas>
+    </div>
   </div>
-
-  <div class="title-screen">
-    <img src="assets/images/concessions4.png">
-    <ul class="title-details">
-      <li class="context">Welcome to your movie theater!</li>
-      <li class="context">You will be running the concession stand.</li>
-      <li class="context">Keep customers happy by adding the correct
-      toppings to their food.</li>
-      <li class="context">To pass Level 1, you need to fulfill 10 out of 15 items.</li>
-    </ul>
-    <button id="start-button">START</button>
-  </div>
-
-  <div class="levels-screen">
-      <h2>Nice Job!</h2>
-      <p class="level-summary"></p>
-      <p class="level-req"></p>
-      <button id="next-level-button">Next Level</button>
-  </div>
-
-  <div class="end-screen">
-    <h2>Game Over</h2>
-    <p class="game-summary"></p>
-    <button id="restart-button">Play Again</button>
-    <button id="home-button">Back to Home</button>
-  </div>
-
-  <div class="canvas-div"></div>
-  <canvas id="game-canvas" width="800" height="600"></canvas>
 </body>
 </html>
