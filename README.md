@@ -1,4 +1,4 @@
-sc# No Outside Snacks
+# No Outside Snacks
 
 Play the game [here](https://katiehan22.github.io/NoOutsideSnacks/)!
 
