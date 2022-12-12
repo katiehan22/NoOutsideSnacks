@@ -1,6 +1,6 @@
 # No Outside Snacks
 
-Play the game [here](https://katiehan22.github.io/NoOutsideSnacks/)!
+Play the game here! [https://katiehan22.github.io/NoOutsideSnacks/](https://katiehan22.github.io/NoOutsideSnacks/)
 
 ## Background
 No Outside Snacks is a movie theater concession stand themed game. Food orders will move across the bottom of the screen. The player must match the correct topping with the food item to earn enough points to move on to the next level. The player advances through 4 levels with the levels progressively get harder as the food items move faster and the orders get larger. 
