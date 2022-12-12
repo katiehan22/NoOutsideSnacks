@@ -14,11 +14,6 @@ Players are able to:
 Additional Features:
 * Music: Background music and sound effects based on different actions, with a mute button. 
 
-## Wireframe
-![Screenshot](assets/images/wireframe.png)
-* Nav links include this project's Github repo and my LinkedIn.
-* Instructions will open up details on how to play and reminder on how many points are needed to advance.
-
 ## Technologies, Libraries, APIs
 This project will be implemented with the following technologies: 
 * The Canvas API to render the game board.
